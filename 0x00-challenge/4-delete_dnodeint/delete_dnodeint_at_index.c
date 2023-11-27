@@ -43,10 +43,10 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
     }
     else
     {
-        // Corrected line: Update the next pointer of the previous node
+        /* Corrected line: Update the next pointer of the previous node */
         (*head)->prev->next = (*head)->next;
 
-        // Handling the next node's previous pointer
+        /* Handling the next node's previous pointer */
         if ((*head)->next)
             (*head)->next->prev = (*head)->prev;
 
