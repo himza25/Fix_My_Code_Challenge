@@ -4,13 +4,14 @@
 #
 ###
 
-result = ARGV.filter_map do |arg|
-  # Convert arg to integer if it is a valid integer string, nil otherwise
-  arg.match?(/^[-+]?\d+$/) ? arg.to_i : nil
+def valid_integer?(str)
+  str.match?(/^[-+]?\d+$/)
 end
 
-# Sort the array of integers
-result.sort!
+# Select and convert valid integer arguments, then sort them
+sorted_integers = ARGV.select { |arg| valid_integer?(arg) }
+                       .map(&:to_i)
+                       .sort
 
 # Output sorted integers
-puts result.join(' ')
+puts sorted_integers.join(' ')
