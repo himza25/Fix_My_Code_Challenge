@@ -13,11 +13,12 @@ if (process.argv.length <= 2) {
     process.exit(1);
 }
 
-const size = parseInt(process.argv[2], 10); // Correct base to 10
+const size = parseInt(process.argv[2], 10); // Use base 10 for decimal numbers
 
 for (let i = 0; i < size; i++) {
+    let squareLine = '';
     for (let j = 0; j < size; j++) {
-        process.stdout.write("#");
+        squareLine += "#";
     }
-    process.stdout.write("\n");
+    console.log(squareLine);
 }
