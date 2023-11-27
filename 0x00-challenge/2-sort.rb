@@ -1,17 +1,13 @@
 ###
 #
-#  Sort integer arguments (ascending)
+#  Sort integer arguments (descending)
 #
 ###
 
-def valid_integer?(str)
-  str.match?(/^[-+]?\d+$/)
-end
-
-# Select and convert valid integer arguments, then sort them
-sorted_integers = ARGV.select { |arg| valid_integer?(arg) }
+# Select and convert valid integer arguments, then sort them in descending order
+sorted_integers = ARGV.select { |arg| arg.match?(/^[-+]?\d+$/) }
                        .map(&:to_i)
-                       .sort
+                       .sort { |a, b| b <=> a }
 
 # Output sorted integers
 puts sorted_integers.join(' ')
