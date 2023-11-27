@@ -1,13 +1,30 @@
 ###
 #
-#  Sort integer arguments (descending)
+#  Sort integer arguments (ascending) 
 #
 ###
 
-# Select and convert valid integer arguments, then sort them in descending order
-sorted_integers = ARGV.select { |arg| arg.match?(/^[-+]?\d+$/) }
-                       .map(&:to_i)
-                       .sort { |a, b| b <=> a }
+result = []
+ARGV.each do |arg|
+    # Skip if not integer
+    next if arg !~ /^-?[0-9]+$/
 
-# Output sorted integers
-puts sorted_integers.join(' ')
+    # Convert to integer
+    i_arg = arg.to_i
+    
+    # Insert result at the right position
+    inserted = false
+    i = 0
+    while i < result.length && !inserted
+        if i_arg <= result[i]
+            result.insert(i, i_arg)
+            inserted = true
+        end
+        i += 1
+    end
+
+    # Append at the end if not inserted yet
+    result << i_arg unless inserted
+end
+
+puts result
